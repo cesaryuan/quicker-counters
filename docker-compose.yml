@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  quickercounters:
+    image: quickercounters
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
