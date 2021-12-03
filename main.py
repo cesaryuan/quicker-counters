@@ -53,7 +53,7 @@ async def hits(id: str, font='DejaVu Sans, Verdana, Geneva, sans-serif'):
     .today-hit-times::before {{
       content: "{todayCount}";
     }}'''
-    return Response(content=svg, media_type="text/css")
+    return Response(content=svg, media_type="text/css", headers={'cache-control': 'private, max-age=20'})
 
 # test url: http://127.0.0.1:8000/likes?id=2a98fd68-6628-4ca5-8edb-08d639a457d1
 @app.get("/likes")
@@ -66,7 +66,7 @@ async def hits(id: str):
     css = f'''.action-likes::before, .action-likes::before {{
       content: "{likes}";
     }}'''
-    return Response(content=css, media_type="text/css")
+    return Response(content=css, media_type="text/css", headers={'cache-control': 'private, max-age=60'})
 
 if __name__ == "__main__":
     import uvicorn
